@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "author": "Pedro Henrique Miranda",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-pi-pico-w",
+      "id": "pico",
+      "top": -60.85,
+      "left": -121.25,
+      "attrs": { "builder": "pico-sdk" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 119.15,
+      "left": -249.6,
+      "attrs": { "value": "330000" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -22.8,
+      "left": -303.4,
+      "attrs": { "color": "limegreen" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": -32.2,
+      "left": -192,
+      "attrs": { "color": "black" }
+    },
+    { "type": "wokwi-led", "id": "led2", "top": 54, "left": -303.4, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 147.95,
+      "left": -249.6,
+      "attrs": { "value": "330000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 90.35,
+      "left": -249.6,
+      "attrs": { "value": "330000" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led3",
+      "top": 15.6,
+      "left": -303.4,
+      "attrs": { "color": "blue" }
+    }
+  ],
+  "connections": [
+    [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+    [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+    [ "pico:GND.1", "btn1:1.r", "black", [ "h0" ] ],
+    [ "pico:GP5", "btn1:2.r", "green", [ "h0" ] ],
+    [ "pico:GP11", "r3:2", "green", [ "h0" ] ],
+    [ "pico:GP12", "r1:2", "green", [ "h-67.2", "v28.84" ] ],
+    [ "pico:GP13", "r2:2", "green", [ "h-57.6", "v48.04" ] ],
+    [ "r3:1", "led1:A", "green", [ "v-76.8", "h-19.2" ] ],
+    [ "r1:1", "led3:A", "green", [ "v0", "h-9.6", "v-67.2" ] ],
+    [ "r2:1", "led2:A", "green", [ "v0", "h-19.2", "v-57.6" ] ],
+    [
+      "led3:C",
+      "pico:GND.4",
+      "green",
+      [ "v0", "h-38", "v0", "h0", "v115.2", "h172.8", "v-57.6" ]
+    ],
+    [ "led2:C", "pico:GND.4", "green", [ "v0", "h-38", "v76.8", "h172.8", "v-57.6" ] ],
+    [ "led1:C", "pico:GND.4", "green", [ "v0", "h-38", "v153.6", "h172.8", "v-57.6" ] ]
+  ],
+  "dependencies": {}
+}
